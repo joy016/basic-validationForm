@@ -1,0 +1,34 @@
+import { useState } from "react";
+
+const useInput = (validateValue) => {
+  const [enteredValue, setEnteredValue] = useState("");
+  const [isTouched, setisTouched] = useState(false);
+
+  const valueIsValid = validateValue(enteredValue);
+  const hasError = !valueIsValid && isTouched;
+
+  const valueChangeHandler = (event) => {
+    setEnteredValue(event.target.value);
+  };
+
+  const inputBlurHandler = (event) => {
+    setisTouched(true);
+  };
+
+  const resetInputValue = () => {
+    setEnteredValue("");
+    setisTouched(false);
+  };
+
+  return {
+    value: enteredValue,
+    isTouched,
+    valueIsValid,
+    valueChangeHandler,
+    inputBlurHandler,
+    resetInputValue,
+    hasError,
+  };
+};
+
+export default useInput;
