@@ -85,7 +85,7 @@ const BasicForm = () => {
           onBlur={inputEmailBlurHandler}
         />
         {emailHasError && (
-          <p className="error-text">Field name cannot be empty</p>
+          <p className="error-text">Field Email cannot be empty</p>
         )}
       </div>
 
